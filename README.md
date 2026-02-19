@@ -4,8 +4,6 @@ En este laboratorio analizamos señales fisiológicas de ECG empleando herramien
 ---
 <h1 align="center"><i><b>PARTE A DEL LABORATORIO</b></i></h1>
 
-```mermaid
-
 + **importación de librerias y carga de señal**
 ```python
 !pip install wfdb

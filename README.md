@@ -290,6 +290,5 @@ plt.show()
 ```
 **Resultado:**
 
-<p align="center">
-<img width="577" height="455" alt="image" src="https://github.com/user-attachments/assets/3b08dc29-e108-40db-bf3e-ffa6b5d50d04" />
-</p>
+<img width="589" height="455" alt="image" src="https://github.com/user-attachments/assets/cca7cac9-331e-4430-9e37-1256b7f5101f" />
+

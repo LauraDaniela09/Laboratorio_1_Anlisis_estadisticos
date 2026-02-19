@@ -202,15 +202,6 @@ Calcula la curtosis, la cual describe que tan achatados o afilados son los picos
 
 <h1 align="center"><i><b>PARTE B DEL LABORATORIO</b></i></h1>
 
-```mermaid
-graph TD
-    A[Inicio] --> B[Extracción de señal]
-    B --> C[Leyendo datos con pandas]
-    C --> D[Visualización de señal]
-    D --> E[Cálculo estadísticos]
-    E --> F[Histograma y función de probabilidad]
-    F --> G[Fin]
- ```
  
 + **visualizacion de la señal extraida del generador biologico**
   

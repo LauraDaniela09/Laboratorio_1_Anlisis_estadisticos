@@ -3,6 +3,10 @@ En este laboratorio analizamos señales fisiológicas de ECG empleando herramien
 
 ---
 <h1 align="center"><i><b>PARTE A DEL LABORATORIO</b></i></h1>
+<p align="center">
+<img width="350" height="750" alt="image" src="https://github.com/user-attachments/assets/0c9ad332-5c7f-4ff6-99d6-1b6f8322ea8e" />
+</p>
+
 
 + **importación de librerias y carga de señal**
 ```python
@@ -201,7 +205,9 @@ Calcula la curtosis, la cual describe que tan achatados o afilados son los picos
 
 
 <h1 align="center"><i><b>PARTE B DEL LABORATORIO</b></i></h1>
-
+<p align="center">
+<img width="350" height="750" alt="image" src="https://github.com/user-attachments/assets/dfbd8def-c456-4138-a710-0850aa3a6767" />
+</p>
  
 + **visualizacion de la señal extraida del generador biologico**
   
@@ -294,7 +300,9 @@ plt.show()
 
 
 <h1 align="center"><i><b>PARTE C DEL LABORATORIO</b></i></h1>
-
+<p align="center">
+<img width="350" height="750" alt="image" src="https://github.com/user-attachments/assets/66ca241e-2551-4026-a818-1cd688e4ffb1" />
+</p>
 A la señal de la parte B (signal2) se le contamina con 3 tipos de ruido diferentes para despues calcular su valor SNR.
 
 ---
@@ -411,4 +419,30 @@ resultado:
 + `pot_signal:` Se utiliza para calcular el SNR.
 
 + SNR: 27,627 dB
++ **Preguntas y respuestas**
 
+- *¿Los valores estadísticos de la señal sintética son exactamente iguales a los de la señal real? ¿Por qué?*
+
+No son iguales. La señal real presenta mayor variabilidad y dispersión debido a factores fisiológicos y posibles artefactos. En cambio, la señal sintética es más uniforme y estable porque es generada bajo condiciones controladas.
+
+- *¿Afecta el tipo de ruido el valor de la SNR? ¿Por qué?*
+
+Sí, el tipo de ruido afecta la SNR. El ruido impulsivo disminuye más la SNR debido a sus picos abruptos de alta amplitud, mientras que otros tipos de ruido generan una degradación menor. Esto ocurre porque cada ruido tiene diferente energía y comportamiento estadístico.
++ **Análisis**
+En la Parte A se analizaron los parámetros estadísticos de una señal ECG real, evidenciando una alta variabilidad y dispersión en sus valores. La desviación estándar y la varianza fueron elevadas, lo que indica fluctuaciones significativas en la amplitud de la señal. Además, la curtosis mostró una distribución con picos pronunciados, característica de señales fisiológicas reales que presentan eventos abruptos y posibles interferencias.
+
+En la Parte B, la señal sintética generada presentó menor variabilidad en comparación con la señal real. Los valores de varianza y coeficiente de variación fueron más bajos, lo que indica mayor estabilidad. Esto se debe a que la señal generada es controlada y uniforme, a diferencia de la señal fisiológica real que está influenciada por múltiples factores biológicos.
+
+En la Parte C se observó que la relación señal-ruido (SNR) varía según el tipo de ruido añadido. El ruido impulsivo produjo la mayor degradación de la señal (menor SNR), mientras que el ruido tipo artefacto tuvo un impacto menor. Esto demuestra que el tipo de ruido influye directamente en la calidad de la señal.
++ **Conclusión**
+Los parámetros estadísticos permiten caracterizar y comparar señales biomédicas de manera objetiva. La señal real mostró mayor variabilidad debido a su naturaleza fisiológica y a posibles interferencias, mientras que la señal sintética fue más estable al ser generada en condiciones controladas.
+
+Asimismo, se comprobó que la SNR es un indicador importante de calidad de señal y que su valor depende del tipo de ruido presente. Esto resalta la importancia de identificar y reducir el ruido en aplicaciones biomédicas para obtener mediciones más confiables.
+
+<h1 align="center"><i><b>BIBLIOGRAFIA</b></i></h1
+
+[1] https://physionet.org/about/database/
+
+[2] https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+
+[3] https://www.w3schools.com/python/default.asp

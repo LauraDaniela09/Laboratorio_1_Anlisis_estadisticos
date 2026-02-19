@@ -1,2 +1,2 @@
-# Laboratorio-1--An-lisis-estad-stico-de-se-ales-
+# Laboratorio-1-analisis_estadisticos 
 caracterizar una señal biomédica en función de parámetros estadísticos 

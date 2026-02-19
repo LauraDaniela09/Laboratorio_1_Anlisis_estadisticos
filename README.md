@@ -5,3 +5,17 @@ En este laboratorio analizamos señales fisiológicas de ECG empleando herramien
 <h1 align="center"><i><b>PARTE A DEL LABORATORIO</b></i></h1>
 
 ```mermaid
+
++ **importación de librerias y carga de señal**
+```python
+!pip install wfdb
+import matplotlib.pyplot as plt
+import numpy as np
+import wfdb
+import pandas as pd
+import os
+from scipy.stats import norm
+import seaborn as sns
+```
+Se instalan la libreria `wfdb` para leer archivos locales (.hea, .dat, etc.) del directorio de trabajo. 
+Se importan diferentes librerias necesarias para desarrollar el código con sus funciones.

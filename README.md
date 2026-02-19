@@ -198,3 +198,107 @@ Calcula la curtosis, la cual describe que tan achatados o afilados son los picos
 *Curtosis: [15.20632096]
 
 ---
+
+
+<h1 align="center"><i><b>PARTE B DEL LABORATORIO</b></i></h1>
+
+```mermaid
+graph TD
+    A[Inicio] --> B[Extracción de señal]
+    B --> C[Leyendo datos con pandas]
+    C --> D[Visualización de señal]
+    D --> E[Cálculo estadísticos]
+    E --> F[Histograma y función de probabilidad]
+    F --> G[Fin]
+ ```
+ 
++ **visualizacion de la señal extraida del generador biologico**
+  
+Inicialmente se extrajo la señal desde un generador de señales, usando un DAQ. Para esto se descargó el programa NI DAQ MX y se configuro como finite samples para extraer 100 muestras. Después en mathlab con Data acquisition toolbox se definió la frecuencia de muestreo. Estos datos organizados en una tabla se exportaron como archivo `.csv `para finalmente abrir la tabla en Excel.
+
+posteriormente se lee el registro usando una función de pandas llamada `pd.read_csv()`, y se nombran las columnas x y y, para despues guardarlo en la variable `signal2`.
+
+```python
+df = pd.read_csv('medicion1.csv')
+x = df.iloc[:, 0]
+y = df.iloc[:, 1]
+plt.figure(figsize=(10, 5))
+plt.plot(x,y,color='springgreen')
+plt.title('Señal extraida del generador')
+plt.xlabel('Tiempo (s)')
+plt.ylabel('Voltaje (mV)')
+plt.grid(True)
+plt.show()
+signal2= df.iloc[:, 1]
+```
+
+<p align="center">
+<img width="750" height="470" alt="image" src="https://github.com/user-attachments/assets/3497e712-6952-402e-af17-60c4e2ee5619" />
+</p>
+
+  Se vuelven a calcular manualmente los estadisticos descriptivos de la señal como se hizo en la parte A.
+  
++ **promedio o media**
+  
+```python
+suma=0
+n = 0
+for muestra in signal2:
+  suma=suma+muestra
+  n=n+1
+
+  promedio2=suma/n
+print("promedio=", promedio2)
+```
+**Resultado:**
+
+promedio= 1.2196760663788881
+
++ **desviacion estandar y varianza**
+```python
+suma = 0
+n = 0
+diferencia= 0
+for muestra in signal2:
+    suma += muestra
+    n += 1
+sumaCuadrados2 = 0
+for muestra in signal2:
+    diferencia = muestra - promedio2
+    sumaCuadrados2 += diferencia ** 2
+
+varianza2 = sumaCuadrados2 / n
+desviacionEstandar2 = varianza2 ** 0.5
+
+print("Desviación Estándar:", desviacionEstandar2)
+print("varianza:", varianza2)
+```
+**Resultados**
+
+Desviación Estándar: [0.40117251725441216]
+
+varianza: [0.16093938860024162]
+
++ **coeficiente de variacion**
+```python
+  Coeficiente2=(desviacionEstandar2/promedio2)*100
+print("Coeficiente de Variación:", Coeficiente2)
+```
+**Resultado:**
+
+Coeficiente de Variación: [32.891726607824516]
+
++ **histograma y funcion de probabilidad**
+```python
+plt.figure()
+plt.hist(signal2,bins=100,density=0,color='springgreen')
+plt.title("Histograma señal generador")
+plt.xlabel("Voltaje(μv)")
+plt.ylabel("Frecuencia ")
+plt.show()
+```
+**Resultado:**
+
+<p align="center">
+<img width="577" height="455" alt="image" src="https://github.com/user-attachments/assets/3b08dc29-e108-40db-bf3e-ffa6b5d50d04" />
+</p>

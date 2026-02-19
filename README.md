@@ -292,3 +292,123 @@ plt.show()
 
 <img width="589" height="455" alt="image" src="https://github.com/user-attachments/assets/cca7cac9-331e-4430-9e37-1256b7f5101f" />
 
+
+<h1 align="center"><i><b>PARTE C DEL LABORATORIO</b></i></h1>
+
+A la señal de la parte B (signal2) se le contamina con 3 tipos de ruido diferentes para despues calcular su valor SNR.
+
+---
++ **Ruido gaussiano**
+El ruido gaussiano es un tipo de ruido aleatorio cuyas variaciones siguen una distribución normal.Se define por su media (0 en este caso) y su desviación estándar (0.1, que controla su intensidad). Es común en señales fisiológicas debido a la electrónica del sistema de adquisición y otras fuentes de interferencia aleatoria.
+```python
+fs = 1000  
+t = np.arange(len(signal2)) / fs * 1000   
+
+ruido = np.random.normal(0, 0.1, len(signal2))
+señal_rgauss = signal2 + ruido
+
+pot_signal = np.mean(signal2**2)
+pot_ruido  = np.mean(ruido**2)
+SNR = 10 * np.log10(pot_signal / pot_ruido)
+
+plt.figure(figsize=(12,6))
+plt.plot(t, señal_rgauss, color="red", linewidth=0.8, label="Ruido gaussiano")
+plt.plot(t, signal2, color="teal", linewidth=1, label="Señal fisiológica")
+
+plt.title(f"Señal con ruido gaussiano, SNR = {SNR:.3f} dB")
+plt.xlabel("Tiempo [ms]")
+plt.ylabel("Voltaje [mV]")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+resultado:
+<img width="1015" height="373" alt="image" src="https://github.com/user-attachments/assets/2c847dae-48b2-4130-a295-43efea7a5840" />
+
++ `fs:` Frecuencia de muestreo en hz.
+
++ `ruido = np.random.normal:` Se genera un ruido gaussiano.
+
++ `señal_rgauss = signal2 + ruido:` señal con ruido gaussiano.
+
++ `pot_signal:` Se utiliza para calcular el SNR.
+
++ SRN: 21.713 dB
+---
+
++ **Ruido impulso**
+Este ruido se caracteriza por picos abrupto y repentinos en la señal, generados aquí con una probabilidad del 8% (prob_impulso = 0.08). La función np.random.choice determina en qué puntos aparecen los impulsos (1 o 0), y la amplitud se asigna aleatoriamente con valores de ±0.2. Este ruido suele deberse a interferencias externas o fallos en la transmisión de datos.
+```python
+fs = 1000   
+t = np.arange(len(signal2)) / fs * 1000   
+
+ruido_impulso = np.zeros(len(signal2))
+num_impulsos = int(0.1 * len(signal2))  
+posiciones = np.random.randint(0, len(signal2), num_impulsos)
+ruido_impulso[posiciones] = np.random.choice([-1, 1], size=num_impulsos) * np.random.uniform(0.5, 1.5, num_impulsos)
+señal_rimpulso = signal2 + ruido_impulso
+pot_signal = np.mean(signal2**2)
+pot_ruido  = np.mean(ruido_impulso**2)
+SNR = 10 * np.log10(pot_signal / pot_ruido)
+
+plt.figure(figsize=(12,6))
+plt.plot(t, señal_rimpulso, color="syan", linewidth=0.8, label="Ruido impulsivo")
+plt.plot(t, signal2, color="teal", linewidth=1, label="Señal fisiológica")
+
+plt.title(f"Señal con ruido impulsivo, SNR = {SNR:.3f} dB")
+plt.xlabel("Tiempo [ms]")
+plt.ylabel("Voltaje [mV]")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+resultado:
+<img width="1014" height="393" alt="image" src="https://github.com/user-attachments/assets/cbba2f5b-74b3-4100-b3fc-ffcac44e0bf6" />
++ `fs:` Frecuencia de muestreo en hz.
+
++ `ruido_impulso = np.zeros(len(signal2)):` Se genera un ruido de impulso.
+
++ `señal_rimpulso = signal2 + ruido_impulso:` señal con ruido de impulso.
+
++ `pot_signal:` Se utiliza para calcular el SNR.
+
++ SRN: 11.675dB 
+
+---
+
++ **Ruido artefacto**
+Este ruido representa alteraciones no deseadas en la señal, que no se encuentran presentes en la fuente original si no que se deben a alteraciones externas a dicha fuente, como movimientos del paciente o fallos en los electrodos. Es similar al ruido de impulso, pero con una mayor probabilidad de ocurrencia (prob_imp = 0.15). Se genera con la misma lógica de np.random.choice, agregando perturbaciones aleatorias.
+```python
+fs = 1000 
+t = np.arange(len(signal2)) / fs * 1000 
+freq_artefacto = 0.5 
+ruido_artefacto = 0.3 * np.sin(2 * np.pi * freq_artefacto * (t/1000))
+
+señal_artefacto = signal2 + ruido_artefacto
+pot_signal = np.mean(signal2**2)
+pot_ruido  = np.mean(ruido_artefacto**2)
+SNR = 10 * np.log10(pot_signal / pot_ruido)
+
+plt.figure(figsize=(12,6))
+plt.plot(t, señal_artefacto, color="lime", linewidth=0.8, label="Ruido artefacto")
+plt.plot(t, signal2, color="deeppink", linewidth=1, label="Señal fisiológica")
+
+plt.title(f"Señal con ruido de artefacto, SNR = {SNR:.3f} dB")
+plt.xlabel("Tiempo [ms]")
+plt.ylabel("Voltaje [mV]")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+resultado:
+<img width="1015" height="393" alt="image" src="https://github.com/user-attachments/assets/a657ff28-8a82-4ca7-9fa5-1cea9267cefd" />
++ `fs:` Frecuencia de muestreo en hz.
+
++ `freq_artefacto:` Se genera un ruido de artefacto donde es de baja frecuencia senoida.
+
++ `señal_artefacto:` signal2 + ruido_artefacto: Ruido con ruido de artefacto.
+
++ `pot_signal:` Se utiliza para calcular el SNR.
+
++ SNR: 27,627 dB
+

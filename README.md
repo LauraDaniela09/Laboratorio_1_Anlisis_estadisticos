@@ -45,7 +45,8 @@ plt.show()
 **Resultado:**
 
 <p align="center">
-<img width="1034" height="300" alt="image" src="https://github.com/user-attachments/assets/2727c7c5-2d33-49d2-bd44-a4012c0ecd10" />
+<img width="1269" height="443" alt="image" src="https://github.com/user-attachments/assets/a0001a7f-3836-4224-bb67-c8d9498bd6c9" />
+
 </p>
 
 
@@ -73,7 +74,8 @@ Se grafica esta nueva señal llamada `signal`.
 **Resultado:**
 
 <p align="center">
-<img width="583" height="400" alt="image" src="https://github.com/user-attachments/assets/ab0ca852-91ff-4aa7-9ead-cb52de1835a7" />
+<img width="876" height="593" alt="image" src="https://github.com/user-attachments/assets/67289951-c8c0-4edd-9503-311e91b597fd" />
+
 
 </p>
 
@@ -156,7 +158,8 @@ Grafica un histograma y nombra los ejes *x* y *y*.
 **Resultado:**
 
 <p align="center">
-<img width="585" height="455" alt="image" src="https://github.com/user-attachments/assets/23d93aed-f0e0-49fb-8b69-e6fc61813c20" />
+<img width="870" height="672" alt="image" src="https://github.com/user-attachments/assets/2f6731b5-13fb-435d-9405-0b8b1b86ad98" />
+
 </p>
 
 ```python
@@ -173,7 +176,8 @@ grafica el histograma nuevamente, pero con la curva de la `función de probabili
 **Resultado:**
 
 <p align="center">
-<img width="862" height="400" alt="image" src="https://github.com/user-attachments/assets/cbeb7cbb-7da1-4ebc-9f79-3a2211490135" />
+<img width="1258" height="584" alt="image" src="https://github.com/user-attachments/assets/4953733f-f9ad-4e82-966e-7cc9f858a391" />
+
 </p>
 
 `sns.histplot`:Es una funcion de seaborn para realizar histogramas y de forma estilizada.
@@ -230,7 +234,8 @@ signal2= df.iloc[:, 1]
 ```
 
 <p align="center">
-<img width="750" height="470" alt="image" src="https://github.com/user-attachments/assets/3497e712-6952-402e-af17-60c4e2ee5619" />
+<img width="1120" height="617" alt="image" src="https://github.com/user-attachments/assets/8e6002bf-bbfd-40dc-b423-bd04288e86eb" />
+
 </p>
 
   Se vuelven a calcular manualmente los estadisticos descriptivos de la señal como se hizo en la parte A.
